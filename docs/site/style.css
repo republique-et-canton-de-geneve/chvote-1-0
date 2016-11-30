@@ -1,0 +1,135 @@
+h1 {
+    font-size: 3rem;
+    line-height: 100%;
+    margin: 0;
+}
+
+.fix-height {
+    line-height: 3rem;
+}
+
+h2 {
+    color: #e80300;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+h2 a, h2 a:hover, h2 a:visited, h2 a:focus {
+    color: #e80300;
+}
+
+.header {
+    color: white;
+    background-color: #717171;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.header a {
+    color: white;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+em {
+    font-style: normal;
+    color: #e80300;
+}
+
+.btn {
+    background-color: #e80300;
+}
+
+.box-container {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.box-container:first-of-type {
+    padding-left: 0 !important;
+}
+
+.box-container:last-of-type {
+    padding-right: 0 !important;
+}
+
+.box {
+    -webkit-box-shadow: 1px 2px 8px -1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 2px 8px -1px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 2px 8px -1px rgba(0, 0, 0, 0.75);
+}
+
+@media only screen and (max-width: 990px) {
+    .box {
+        height: auto !important;
+        margin-bottom: 2rem;
+    }
+
+    .email-align {
+        text-align: left !important;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media only screen and (min-width: 990px) {
+    .is-table-row {
+        display: table;
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+        border-spacing: 15px;
+    }
+
+    .table-container {
+        margin-right: -30px;
+        margin-left: -30px;
+    }
+
+    .is-table-row [class*="col-"] {
+        float: none;
+        display: table-cell;
+        vertical-align: top;
+    }
+
+    .is-table-row::before, .is-table-row::after {
+        display: none;
+    }
+}
+
+.button-bar {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.email-align, .lang-align {
+    text-align: right;
+}
+
+.margin-top-large {
+    margin-top: 30px;
+}
+
+.margin-bottom-large {
+    margin-bottom: 30px;
+}
+
+.repo-image {
+    text-align: center;
+}
+
+.repo-image img {
+    max-width: 100%;
+}
+
+.repo-box {
+    padding: 1px 10px 10px;
+}
