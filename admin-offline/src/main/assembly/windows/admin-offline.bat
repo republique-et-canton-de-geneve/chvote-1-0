@@ -1,0 +1,1 @@
+"./jre/bin/java" -jar -Dfile.encoding=UTF-8 -d64 lib/${project.artifactId}-${project.version}.jar

@@ -1,0 +1,129 @@
+/*-
+ * #%L
+ * Admin offline
+ * %%
+ * Copyright (C) 2015 - 2016 République et Canton de Genève
+ * %%
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * #L%
+ */
+* {
+    /* color definitions */
+    /* all colors should be defined here */
+    -fx-default-bg-color: #ccc;
+    -fx-default-fg-color: black;
+    -fx-ok-color: green;
+    -fx-warn-color: yellow;
+    -fx-error-color: darkred;
+    /* end of color definitions */
+    /* no colors may be defined beyond this point */
+
+    -fx-base: -fx-default-bg-color;
+}
+
+.background {
+    -fx-background-color: -fx-default-bg-color;
+}
+
+.label {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: -fx-default-fg-color;
+    -fx-opacity: 0.6;
+}
+
+.text {
+    -fx-font-smoothing-type: lcd;
+}
+
+.menu-bar {
+    -fx-background-color: derive(-fx-default-bg-color, 20%);
+}
+
+.context-menu {
+    -fx-background-color: derive(-fx-default-bg-color, 50%);
+}
+
+.menu-bar .label {
+    -fx-font-size: 12pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: -fx-default-fg-color;
+    -fx-opacity: 0.9;
+}
+
+.table-view {
+    -fx-control-inner-background: -fx-default-bg-color;
+    -fx-background-color: -fx-default-bg-color;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 5px;
+    -fx-font-size: 12pt;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-border-width: 0;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-insets: 0;
+}
+
+.table-view .label {
+    -fx-font-size: 12pt;
+}
+
+.ok-text {
+    -fx-fill: -fx-ok-color;
+    -fx-stroke: -fx-default-fg-color;
+    -fx-stroke-width: 1;
+}
+
+.warn-text {
+    -fx-fill: -fx-warn-color;
+    -fx-stroke: -fx-default-fg-color;
+    -fx-stroke-width: 1;
+}
+
+.error-text {
+    -fx-fill: -fx-error-color;
+    -fx-stroke: -fx-default-fg-color;
+    -fx-stroke-width: 1;
+}
+
+.logText {
+    -fx-padding: 0 0 0 20px;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-size: 12px;
+    -fx-text-fill: -fx-default-fg-color;
+}
+
+.header-label {
+    -fx-font-size: 14pt;
+    -fx-stroke: derive(-fx-default-bg-color, 40%);
+    -fx-stroke-width: 1;
+}
+
+.password-dialog .text-input {
+    -fx-font-size: 11pt;
+}
+
+.consoleOutput {
+    -fx-border-radius: 5px;
+    -fx-border-width: 2px;
+    -fx-border-style: solid inside line-join bevel;
+    -fx-border-color: derive(-fx-default-bg-color, 40%) derive(-fx-default-bg-color, 80%) derive(-fx-default-bg-color, 80%) derive(-fx-default-bg-color, 40%);
+}

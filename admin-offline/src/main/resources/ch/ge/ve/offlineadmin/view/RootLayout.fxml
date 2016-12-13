@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="680.0" prefWidth="1024.0" styleClass="background" stylesheets="@../styles/offlineadmin.css"
+            xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+    <center>
+        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <Tab text="%root.tab.generate_keys">
+                <fx:include source="KeyGeneration.fxml"/>
+            </Tab>
+            <Tab text="%root.tab.test_keys">
+                <fx:include source="KeyTesting.fxml"/>
+            </Tab>
+            <Tab text="%root.tab.open_ballot_box">
+                <fx:include source="BallotDecryption.fxml"/>
+            </Tab>
+        </TabPane>
+    </center>
+</BorderPane>

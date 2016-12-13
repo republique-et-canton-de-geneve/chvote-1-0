@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/8.0.40"
+            fx:controller="ch.ge.ve.offlineadmin.controller.ConsoleOutputControl">
+    <center>
+        <TableView fx:id="logTable">
+            <styleClass>
+                <String fx:value="background"/>
+                <String fx:value="consoleOutput"/>
+            </styleClass>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </padding>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+        </TableView>
+    </center>
+    <bottom>
+        <AnchorPane>
+            <ProgressBar fx:id="progressBar" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+                         AnchorPane.rightAnchor="0.0" AnchorPane.leftAnchor="0.0">
+                <padding>
+                    <Insets bottom="5.0" left="0.0" right="0.0" top="5.0"/>
+                </padding>
+            </ProgressBar>
+        </AnchorPane>
+    </bottom>
+</BorderPane>
