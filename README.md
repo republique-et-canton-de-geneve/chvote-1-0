@@ -1,4 +1,5 @@
-# CHVote
+# CHVote [![Build Status](https://travis-ci.org/republique-et-canton-de-geneve/chvote-1-0.svg?branch=master&style=flat)](https://travis-ci.org/republique-et-canton-de-geneve/chvote-1-0)
+
 CHVote aims to be an opensource, publicly owned evoting system. It is the result of the collaboration
 between the Geneva State Chancellery and the Geneva IT Department.
 
