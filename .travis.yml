@@ -8,5 +8,5 @@ addons:
       - oracle-java8-installer
 script:
 - cd base-pom && mvn clean install
-- cd commons-base && mvn clean install
-- cd admin-offline && mvn clean install
+- cd ../commons-base && mvn clean install
+- cd ../admin-offline && mvn clean install
