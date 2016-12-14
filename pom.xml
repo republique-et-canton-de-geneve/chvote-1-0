@@ -1,0 +1,23 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>ch.ge.ve</groupId>
+        <artifactId>base-pom</artifactId>
+        <version>1.0.0.17-SNAPSHOT</version>
+        <relativePath>base-pom/pom.xml</relativePath>
+    </parent>
+
+    <groupId>ch.ge.ve</groupId>         <!-- needed by version maven plugin -->
+    <artifactId>parent</artifactId>
+    <version>5.2.1.8-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+    <name>Parent pom</name>
+
+    <modules>
+        <module>base-pom</module>
+        <module>commons-base</module>
+        <module>admin-offline</module>
+    </modules>
+
+</project>

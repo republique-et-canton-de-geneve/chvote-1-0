@@ -84,6 +84,7 @@
         <dependency-check-maven.version>1.3.6</dependency-check-maven.version>
         <jacoco-maven-plugin.version>0.7.6.201602180812</jacoco-maven-plugin.version>
         <license-maven-plugin.version>1.9</license-maven-plugin.version>
+        <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
 
         <!-- test libraries -->
         <junit.version>4.12</junit.version>
@@ -481,6 +482,11 @@
                             </configuration>
                         </execution>
                     </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.eluder.coveralls</groupId>
+                    <artifactId>coveralls-maven-plugin</artifactId>
+                    <version>${coveralls-maven-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
