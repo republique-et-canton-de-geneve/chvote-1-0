@@ -1,1 +1,6 @@
 *.iml
+.idea
+admin-offline/target
+commons-base/commons-crypto/target
+commons-base/commons-file-utils/target
+commons-base/commons-properties/target
