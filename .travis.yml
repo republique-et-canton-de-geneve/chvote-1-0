@@ -8,7 +8,9 @@ addons:
   apt:
     packages:
       - oracle-java8-installer
-      - oracle-java8-unlimited-jce-policy
+  sonarqube:
+    token:
+      secure: XuRMS2r+5cY3w2/SQwuxa0EEGbdgEJIyfV1QwS1kaLz6c5kX4xVhTsAqMfSd85GrKIdHPjvyq8J6bLxa3iVeuNUXG/S01XfJmoSujnP06sCCqay/+VwytzhVV4CN3bzFlibaHu7dPqbScbvXRP5Sm0wc4KEsrwM5+Oi2ZnFVwllFfgvJUuO+3kaLdIjUIqbtNttpA17oShFRjhznVO/Yk9JKPyxgRdt4Fzyiu39uJQ4hsBZ0J/9xXVFL0cL+WOvAeSklAJrRKVmiR2f/1gv1cgmsQ9uSOUqRbzDNbtG5xymBkXxYz4nj8RImGtmMgx0VBCI6pJWOOGdjpEtY3c0Qun+XxcH8mRphe0IsLYeZDazYLi/c1ILShNvbQDTuMXmNjDwdx89SaTeELITuT6JJcP5GOxtL/2Kw8X19ED5Yc8R+tMjz+qAPkpuBACrPtRLDqflXbDFOHt5dKYQXfLD1UeECMMQfrTAjNZ2sjf17YjBpSh1sqMogK/kuYJbvG7O7W6/LL87XnLhqG9tFE5mn1V7qOpqJPFQUITsdd7GV/Kbn1OkEQ6avZBQWaMRDzFkZyK4jeca2UrItV473yU9pRpJIsKR09z39iNgGRfq1x8/Vn0mv8wZ/z+MjtDOwVZzTbfZ3Sw73VI+Bh2fkSp/Az5J1LukN4lcKEU52xoeP0Sg=
       
 before_install: "curl -L --cookie 'oraclelicense=accept-securebackup-cookie;'  http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip -o /tmp/policy.zip && sudo unzip -j -o /tmp/policy.zip *.jar -d `jdk_switcher home oraclejdk8`/jre/lib/security && rm /tmp/policy.zip"
 
@@ -16,3 +18,7 @@ script:
 - cd base-pom && mvn clean install
 - cd ../commons-base && mvn clean install
 - cd ../admin-offline && mvn clean install
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
