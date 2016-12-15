@@ -15,9 +15,9 @@ addons:
 before_install: "curl -L --cookie 'oraclelicense=accept-securebackup-cookie;'  http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip -o /tmp/policy.zip && sudo unzip -j -o /tmp/policy.zip *.jar -d `jdk_switcher home oraclejdk8`/jre/lib/security && rm /tmp/policy.zip"
 
 script:
-- cd $HOME/base-pom && mvn clean install
-- cd $HOME/commons-base && mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
-- cd $HOME/admin-offline && mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+- cd base-pom && mvn clean install
+- cd ../commons-base && mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+- cd ../admin-offline && mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
 
 cache:
   directories:
