@@ -42,6 +42,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.GeneralSecurityException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.security.MessageDigest;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Arrays;
 import java.util.Base64;
@@ -200,7 +201,7 @@ public class SensitiveDataCryptoUtils {
     public static boolean verifyMAC(String message, String macAsBase64) {
         final byte[] knownMac = base64decoder.decode(macAsBase64);
         final byte[] calculatedMac = buildMAC(message);
-        return Arrays.equals(knownMac, calculatedMac);
+        return MessageDigest.isEqual(knownMac, calculatedMac);
     }
 
     /**
@@ -214,7 +215,7 @@ public class SensitiveDataCryptoUtils {
         final byte[] knownMacAndSalt = base64decoder.decode(macAndSaltAsBase64);
         final byte[] salt = Arrays.copyOfRange(knownMacAndSalt, 0, SALT_SIZE_BYTES);
         final byte[] calculatedMac = buildMAC(message, salt);
-        return Arrays.equals(knownMacAndSalt, calculatedMac);
+        return MessageDigest.isEqual(knownMacAndSalt, calculatedMac);
     }
 
     /**
