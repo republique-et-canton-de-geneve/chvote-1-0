@@ -79,6 +79,8 @@ Contributions are also welcomed, either using pull requests or by submitting iss
 manager will take care of those inputs, lead exchanges around them, and actions could take place according to their 
 relevance, their criticality, and the CHVote development roadmap.
 
+## Security
+
 In case of vulnerability discovery, please use the following email address for coordinated disclosure: security-chvote@etat.ge.ch.
 
 # Licence
