@@ -43,16 +43,10 @@ The following software must be installed to compile and run the application:
 We do not provide support for the use of OpenJDK/OpenJFX. 
 
 ## Compiling
-Compile and install the 3 modules in this sequence:
+Compile and install all modules:
 
 ```Shell
-cd $PROJECT_ROOT/base-pom
-mvn clean install
-
-cd $PROJECT_ROOT/commons-base
-mvn clean install
-
-cd $PROJECT_ROOT/admin-offline
+cd $PROJECT_ROOT
 mvn clean install
 ```
 
