@@ -29,7 +29,6 @@ import java.time.Instant
 import java.time.temporal.ChronoUnit
 
 import static ch.ge.ve.offlineadmin.util.SecurityConstants.*
-import static java.time.temporal.ChronoUnit.*
 
 /**
  * This test suit aims at covering the {@link KeyGenerator} service.
@@ -112,11 +111,11 @@ class KeyGeneratorTest extends Specification {
         def keyPair = generator.generateKeyPair()
 
         // the certificate generation truncates the milliseconds, so just check one minute sooner
-        def before = Instant.now().minus(1, MINUTES)
+        def before = Instant.now().minus(1, ChronoUnit.MINUTES)
 
         when:
         def certificate = generator.generateCertificate(keyPair)
-        def after = Instant.now().plus(365, DAYS)
+        def after = Instant.now().plus(365, ChronoUnit.DAYS)
 
         then:
         certificate.getSubjectDN().getName() == "C=Switzerland, OU=My organisational unit, O=My organisation, CN=My common name"
@@ -135,7 +134,7 @@ class KeyGeneratorTest extends Specification {
         def keyStore = generator.createKeyStore(keyPair.getPrivate(), certificate, password)
 
         then:
-        keyStore.getCertificate("ctrl").getPublicKey() == keyPair.getPublic()
-        keyStore.getKey("ctrl", password) == keyPair.getPrivate()
+        keyStore.getCertificate("ctrl").getPublicKey().equals(keyPair.getPublic())
+        keyStore.getKey("ctrl", password).equals(keyPair.getPrivate())
     }
 }

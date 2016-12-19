@@ -7,7 +7,7 @@
 
     <groupId>ch.ge.ve</groupId>
     <artifactId>base-pom</artifactId>
-    <version>1.0.0.17-SNAPSHOT</version>
+    <version>1.0.0.16</version>
 
     <packaging>pom</packaging>
     <name>Base pom</name>
@@ -40,8 +40,8 @@
     </distributionManagement>
 
     <scm>
-        <connection>${scm.base.url}/trunk/base-pom</connection>
-        <developerConnection>${scm.base.url}/trunk/base-pom</developerConnection>
+        <connection>${scm.base.url}/branches/201702VP/base-pom</connection>
+        <developerConnection>${scm.base.url}/branches/201702VP/base-pom</developerConnection>
     </scm>
 
     <properties>
@@ -381,6 +381,20 @@
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>versions-maven-plugin</artifactId>
                     <version>${versions-maven-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>ch.ge.sidp.ve</groupId>
+                    <artifactId>jarbytecodehash-maven-plugin</artifactId>
+                    <version>${jarbytecodehash-maven-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>compute_hashes</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>hash</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
