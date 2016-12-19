@@ -383,20 +383,6 @@
                     <version>${versions-maven-plugin.version}</version>
                 </plugin>
                 <plugin>
-                    <groupId>ch.ge.sidp.ve</groupId>
-                    <artifactId>jarbytecodehash-maven-plugin</artifactId>
-                    <version>${jarbytecodehash-maven-plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>compute_hashes</id>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>hash</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>sonar-maven-plugin</artifactId>
                     <version>${sonar-maven-plugin.version}</version>
