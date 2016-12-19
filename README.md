@@ -6,6 +6,19 @@ between the Geneva State Chancellery and the Geneva IT Department.
 CHVote is currently used by 4 cantons in Switzerland: Basel-City, Bern, Geneva and Luzern, either for
 votations or elections.
 
+# Table of contents
+
+- [Released components](#released-components)
+- [System overview](#system-overview)
+- [Compiling and running](#compiling-and-running)
+	- [Preconditions](#preconditions)
+	- [Compiling](#compiling)
+	- [Running](#running)
+- [Contributing](#contributing)
+	- [Security](#security)
+- [Licence](#licence)
+- [Future](#future)
+
 # Released components
 The following components are released as opensource software:
 * The offline administration application
