@@ -28,6 +28,7 @@ import ch.ge.ve.commons.crypto.exceptions.PrivateKeyPasswordMismatchException;
 import ch.ge.ve.commons.crypto.utils.SecureRandomFactory;
 import ch.ge.ve.commons.properties.PropertyConfigurationService;
 
+import org.apache.log4j.Logger;
 import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.modes.AEADBlockCipher;
 import org.bouncycastle.crypto.params.AEADParameters;
@@ -52,6 +53,8 @@ import java.util.Arrays;
  */
 public class BallotCipherService {
     public static final int AEAD_TAG_SIZE = 128;
+    private static final Logger log = Logger.getLogger(BallotCipherService.class);
+
     private final BallotCiphersProvider ciphersProvider;
 
     private final PropertyConfigurationService propertyConfigurationService;
@@ -213,6 +216,7 @@ public class BallotCipherService {
         try {
             bytes = aeadDecrypt(integrityCipher, integrityKey, authenticatedBallot.getBallotIndex(), authenticatedBallot.getAuthenticatedEncryptedBallot());
         } catch (AEADBadTagException e) {
+            log.error("Authentication tag mismatch", e);
             throw new AuthenticationTagMismatchException(e.getMessage());
         }
 

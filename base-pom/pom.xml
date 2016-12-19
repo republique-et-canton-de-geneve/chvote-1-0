@@ -80,7 +80,7 @@
         <maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
         <versions-maven-plugin.version>2.2</versions-maven-plugin.version>
         <smc-maven-plugin.version>1.0-alpha-1</smc-maven-plugin.version>
-        <sonar-maven-plugin.version>2.6</sonar-maven-plugin.version>
+        <sonar-maven-plugin.version>3.2</sonar-maven-plugin.version>
         <dependency-check-maven.version>1.3.6</dependency-check-maven.version>
         <jacoco-maven-plugin.version>0.7.6.201602180812</jacoco-maven-plugin.version>
         <license-maven-plugin.version>1.9</license-maven-plugin.version>

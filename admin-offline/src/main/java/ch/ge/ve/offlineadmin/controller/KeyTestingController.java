@@ -136,7 +136,9 @@ public class KeyTestingController extends InterruptibleProcessController {
     private String createRandomString() {
         IntStream intStream = random.ints(LENGTH, 0, ALPHABET.length());
         Stream<Character> characterStream = intStream.boxed().map(ALPHABET::charAt);
-        return characterStream.map(Object::toString).reduce((acc, e) -> acc + e).get();
+        return characterStream
+                .map(Object::toString).reduce((acc, e) -> acc + e)
+                .orElseThrow(() -> new CryptoConfigurationRuntimeException("Alphabet or random size misconfiguration"));
     }
 
     private void customizeCipherTextCellFactory() {
@@ -274,7 +276,6 @@ public class KeyTestingController extends InterruptibleProcessController {
         if (!pubKey.isPresent()) {
             throw new KeyProvisioningRuntimeException("Public key was not found in directory:" + selectedDirectory.toPath());
         } else {
-            FileInputStream fileInputStream = new FileInputStream(pubKey.get().toFile());
 
             // needs to be SHA-1, since windows only displays the sha1 hash when viewing a certificate's details
             MessageDigest digest;
@@ -283,9 +284,12 @@ public class KeyTestingController extends InterruptibleProcessController {
             } catch (NoSuchAlgorithmException e) {
                 throw new CryptoConfigurationRuntimeException("Cannot instantiate message digest for file hashing", e);
             }
-            byte[] hash = streamHasher.computeHash(fileInputStream, digest);
-            String hashString = DatatypeConverter.printHexBinary(hash);
-            consoleOutputController.logOnScreen(String.format(resources.getString("key_testing.public_key_hash"), hashString));
+
+            try (FileInputStream fileInputStream = new FileInputStream(pubKey.get().toFile())) {
+                byte[] hash = streamHasher.computeHash(fileInputStream, digest);
+                String hashString = DatatypeConverter.printHexBinary(hash);
+                consoleOutputController.logOnScreen(String.format(resources.getString("key_testing.public_key_hash"), hashString));
+            }
         }
     }
 

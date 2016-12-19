@@ -44,7 +44,7 @@ import java.security.cert.X509Certificate;
  */
 public abstract class BallotCiphersProviderDefaultImpl implements BallotCiphersProvider {
     public static final int GCM_MAC_LENGTH = 128;
-    private static final Logger LOG = Logger.getLogger(BallotCiphersProviderDefaultImpl.class);
+    private static final Logger log = Logger.getLogger(BallotCiphersProviderDefaultImpl.class);
     private final CertificateUtils certificateUtils = new CertificateUtils();
     protected PropertyConfigurationService propertyConfigurationService;
     private Key ballotKeyCipherPublicKey;
@@ -66,8 +66,8 @@ public abstract class BallotCiphersProviderDefaultImpl implements BallotCiphersP
             throw new CryptoConfigurationRuntimeException("cannot initialize the ballot cipher", e);
         }
 
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("ballot cipher : " + ballotCipherAlgorithm + ballotBlockmode);
+        if (log.isDebugEnabled()) {
+            log.debug("ballot cipher : " + ballotCipherAlgorithm + ballotBlockmode);
         }
 
         return new CipherFactory(propertyConfigurationService).getInstance(ballotCipherAlgorithm + ballotBlockmode);
@@ -113,6 +113,7 @@ public abstract class BallotCiphersProviderDefaultImpl implements BallotCiphersP
                     propertyConfigurationService.getConfigValue(BALLOT_INTEGRITY_CHECK_CRYPTING_ALGORITHM) +
                             propertyConfigurationService.getConfigValue(BALLOT_INTEGRITY_CHECK_CRYPTING_BLOCK_MODE);
         } catch (PropertyConfigurationException e) {
+            log.error("Configuration error", e);
             throw new CryptoConfigurationRuntimeException("cannot retrieve the integrity cipher configuration");
         }
         return new CipherFactory(propertyConfigurationService).getInstance(integrityCipherAlgorithmWithBlockmode);
@@ -133,8 +134,8 @@ public abstract class BallotCiphersProviderDefaultImpl implements BallotCiphersP
                 throw new CryptoConfigurationRuntimeException("cannot get the ballot key cipher public key filename configuration", e);
             }
 
-            if (LOG.isDebugEnabled()) {
-                LOG.debug("loadBallotEncryptionKey with ballotKeyPath : " + ballotKeyPath);
+            if (log.isDebugEnabled()) {
+                log.debug("loadBallotEncryptionKey with ballotKeyPath : " + ballotKeyPath);
             }
 
             try {

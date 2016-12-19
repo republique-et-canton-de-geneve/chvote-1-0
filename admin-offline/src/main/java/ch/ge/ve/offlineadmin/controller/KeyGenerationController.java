@@ -168,8 +168,7 @@ public class KeyGenerationController extends InterruptibleProcessController {
     }
 
     private void storeCertificate(X509Certificate certificate, String ctrlDerFilename) {
-        try {
-            FileOutputStream ctrlDerOutputStream = new FileOutputStream(ctrlDerFilename);
+        try (FileOutputStream ctrlDerOutputStream = new FileOutputStream(ctrlDerFilename)){
             ctrlDerOutputStream.write(certificate.getEncoded());
             ctrlDerOutputStream.close();
             consoleOutputController.logOnScreen(String.format(keySavedMessage, ctrlDerFilename));
@@ -179,9 +178,7 @@ public class KeyGenerationController extends InterruptibleProcessController {
     }
 
     private void computePublicKeyHash(PropertyConfigurationService propertyConfigurationService, String ctrlDerFilename) {
-        try {
-            FileInputStream ctrlDerInputStream = new FileInputStream(ctrlDerFilename);
-
+        try (FileInputStream ctrlDerInputStream = new FileInputStream(ctrlDerFilename)){
             // needs to be SHA-1, since windows only displays the sha1 hash when viewing a certificate's details
             MessageDigest digest = MessageDigest.getInstance("SHA-1");
             byte[] keyHash = streamHasher.computeHash(ctrlDerInputStream, digest);
@@ -194,8 +191,7 @@ public class KeyGenerationController extends InterruptibleProcessController {
     }
 
     private void saveIntegrityKey(SecretKey secretKey, String integrityKeyFilename) {
-        try {
-            ObjectOutputStream integrityKeyOutputStream = new ObjectOutputStream(new FileOutputStream(integrityKeyFilename));
+        try (ObjectOutputStream integrityKeyOutputStream = new ObjectOutputStream(new FileOutputStream(integrityKeyFilename))){
             integrityKeyOutputStream.writeObject(secretKey);
             integrityKeyOutputStream.close();
             consoleOutputController.logOnScreen(String.format(keySavedMessage, integrityKeyFilename));
