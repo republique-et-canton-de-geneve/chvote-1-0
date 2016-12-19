@@ -15,6 +15,7 @@ votations or elections.
 	- [Compiling](#compiling)
 	- [Running](#running)
 - [Contributing](#contributing)
+    - [Pull request policies](#pull-request-policies)
 	- [Security](#security)
 - [Licence](#licence)
 - [Future](#future)
