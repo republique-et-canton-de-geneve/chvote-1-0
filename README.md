@@ -92,6 +92,12 @@ Contributions are also welcomed, either using pull requests or by submitting iss
 manager will take care of those inputs, lead exchanges around them, and actions could take place according to their 
 relevance, their criticality, and the CHVote development roadmap.
 
+## Pull request policies
+The master branch is dedicated to mirror the state of the production code.
+* Please use the [development](https://github.com/republique-et-canton-de-geneve/chvote-1-0/tree/development) branch for pull requests
+modifying the source code.
+* You can however use the master branch for pull requests concerning the documentation only.
+
 ## Security
 
 In case of vulnerability discovery, please use the following email address for coordinated disclosure: security-chvote@etat.ge.ch.
