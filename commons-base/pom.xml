@@ -10,7 +10,7 @@
 
     <groupId>ch.ge.ve</groupId>         <!-- needed by version maven plugin -->
     <artifactId>commons-base</artifactId>
-    <version>5.2.1.7</version>
+    <version>5.2.1.8-SNAPSHOT</version>
 
     <packaging>pom</packaging>
     <name>Common modules (opensource)</name>
