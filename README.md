@@ -69,6 +69,10 @@ mvn clean install
 cd $PROJECT_ROOT/admin-offline
 mvn clean install
 ```
+On Linux, the Oracle JVM uses the blocking `/dev/random` random device as
+entropy source by default and it will cause long build delays. See
+[Avoiding JVM Delays Caused by Random Number Generation](https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmrand.html)
+to workaround this issue.
 
 Some JDK distributions do not come with the Monocle classes used by the headless GUI tests. If you're running into those cases 
 (java.lang.AbstractMethodError: com.sun.glass.ui.monocle.NativePlatform.createInputDeviceRegistry appearing in the test logs),
