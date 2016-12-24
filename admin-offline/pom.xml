@@ -4,14 +4,14 @@
     <parent>
         <groupId>ch.ge.ve</groupId>
         <artifactId>base-pom</artifactId>
-        <version>1.0.0.17-SNAPSHOT</version>
+        <version>1.0.0.16</version>
         <relativePath>../base-pom/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ch.ge.ve</groupId>      <!-- needed by version maven plugin -->
     <artifactId>admin-offline</artifactId>
-    <version>5.2.1.9-SNAPSHOT</version>
+    <version>5.2.1.10</version>
     <packaging>jar</packaging>
     <name>Admin offline</name>
     <description>
@@ -23,14 +23,14 @@
     </description>
 
     <scm>
-        <connection>${scm.base.url}/trunk/admin-offline</connection>
-        <developerConnection>${scm.base.url}/trunk/admin-offline</developerConnection>
+        <connection>${scm.base.url}/branches/201702VP/admin-offline</connection>
+        <developerConnection>${scm.base.url}/branches/201702VP/admin-offline</developerConnection>
     </scm>
 
     <properties>
-        <commons.version>5.2.1.8-SNAPSHOT</commons.version>
-        <oracle.jre.version>8u101</oracle.jre.version>
-        <oracle.jre.path>jre1.8.0_101</oracle.jre.path>
+        <commons.version>5.2.1.7</commons.version>
+        <oracle.jre.version>8u112</oracle.jre.version>
+        <oracle.jre.path>jre1.8.0_112</oracle.jre.path>
     </properties>
 
     <dependencies>
@@ -86,6 +86,7 @@
             <groupId>org.objenesis</groupId>
             <artifactId>objenesis</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.testfx</groupId>
             <artifactId>testfx-core</artifactId>
@@ -94,7 +95,7 @@
             <groupId>org.testfx</groupId>
             <artifactId>testfx-junit</artifactId>
         </dependency>
-        <dependency>
+		<dependency>
             <groupId>org.testfx</groupId>
             <artifactId>openjfx-monocle</artifactId>
             <version>1.8.0_20</version>

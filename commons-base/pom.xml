@@ -4,13 +4,13 @@
     <parent>
         <groupId>ch.ge.ve</groupId>
         <artifactId>base-pom</artifactId>
-        <version>1.0.0.17-SNAPSHOT</version>
+        <version>1.0.0.16</version>
         <relativePath>../base-pom/pom.xml</relativePath>
     </parent>
 
     <groupId>ch.ge.ve</groupId>         <!-- needed by version maven plugin -->
     <artifactId>commons-base</artifactId>
-    <version>5.2.1.8-SNAPSHOT</version>
+    <version>5.2.1.7</version>
 
     <packaging>pom</packaging>
     <name>Common modules (opensource)</name>
@@ -23,8 +23,8 @@
     </modules>
 
     <scm>
-        <connection>${scm.base.url}/trunk/commons-base</connection>
-        <developerConnection>${scm.base.url}/trunk/commons-base</developerConnection>
+        <connection>${scm.base.url}/branches/201702VP/commons-base</connection>
+        <developerConnection>${scm.base.url}/branches/201702VP/commons-base</developerConnection>
     </scm>
 
     <properties>
