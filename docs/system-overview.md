@@ -227,54 +227,54 @@ The security objectives are defined by the [swiss federal chancellery ordinance 
 
 ### Security measures
 
-####Secured software development lifecycle
+#### Secured software development lifecycle
 The system development follows a secured software development lifecycle. The following activities are actively held:
 
-#####Education & Guidance
+##### Education & Guidance
 The IT specialists follow security training plans (secure software development, secure infrastructure operations, ...).
 
 The business stakeholders follow security awareness programs, in particular concerning data treatment, exchange and
 storage.
 
-#####Security requirements
+##### Security requirements
 The security requirements are first class citizens among the non functional requirements of the evoting system. They are
 derived from the legal requirements, the best practices and the business functionality. They also include access control
 matrices.
 
-#####Threat assessment
+##### Threat assessment
 The threats to the evoting system are modeled and rated, and include attacker profiles from outside and inside
 the organization. Furthermore, the abuse cases are built and maintained.
 
-#####Secure architecture
+##### Secure architecture
 The software is built using approved third-party and custom developed security components. The team is aware of the secure design patterns 
 and applies them according to the developer guidelines documentation.
 
-#####Design review
+##### Design review
 The design of the system is checked against the threat and security models. Any major change to the security design 
 of the system is also reviewed by a third-party security expert. 
 
-#####Code review
+##### Code review
 A manual code review is performed on all the committed source code. It is based on the OWASP ASVS and checks 
 the use of the project security design patterns. Automated static checks are also performed to find security flaws.
 
 A third-party code review is conducted by a secure coding expert on every major releases of the application. 
 
-#####Security testing
+##### Security testing
 The application's security features are automatically checked with specifically developed integration tests.
 Penetration tests are also performed prior to major releases.  
 
 A third-party penetration test is conducted by security experts on every major releases of the application or of its infrastructure.
 
-#####Vulnerability management
+##### Vulnerability management
 Automatic vulnerability tests are run over the voting services and its infrastructure. The IT specialists 
 (infrastructure as well as software) conduct a security watch for the domains under their responsibilities. Patch
 assessment and deployment is also part of the process.
 
-#####Environment hardening
+##### Environment hardening
 The server infrastructure is hardened according to the [CIS security benchmarks](https://benchmarks.cisecurity.org).
 This covers the operating system and the installed middlewares.
 
-####Logical access control
+#### Logical access control
 A privileged access management (PAM) system ensures that the system administrators can have access to the evoting infrastructure only through a 4 eyes connection policy: a user
 requests a connection, which another user authorizes. It also involves a strong authentication with 
 personal accounts. Once connected, all the actions are then logged by the PAM system, either when using a ssh or a 
@@ -283,10 +283,10 @@ RDP connexion.
 The access to the evoting administration application complies to the same rules. It is the reason why it runs in a
 virtualized environment, ensuring 4 eyes connection with strong authentication and traceability through the RDP channel. 
 
-####Physical access control
+#### Physical access control
 The evoting infrastructure is placed in secured rooms, whose access are controlled and logged.
 
-####Filesystem integrity
+#### Filesystem integrity
 The integrity of the web server and of the application server filesystems is checked from the production deployment to 
 the vote closing. It allows to detect any change in the parameters, in the application or in the cryptographic data.
 A probe sends an alert in case of integrity inconsistencies.
@@ -294,7 +294,7 @@ A probe sends an alert in case of integrity inconsistencies.
 An additional preventive measure consists in having an immutable zone in the filesystem that is activated from the ballot 
 box initialization until the vote is closed. This zone stores all the data than should not change during this period.  
 
-####Sensitive data protection
+#### Sensitive data protection
 Sensitive data is stored in the evoting database and consists mainly of the voting card identification and 
 authentication data, as well as the return codes. As per the best practices,
 cryptographic protections are applied. Two kinds of solution are used:
@@ -303,7 +303,7 @@ cryptographic protections are applied. Two kinds of solution are used:
  * AES256-GCM encryption for data to be retrieved as clear text (return codes, birth date for statistics purpose).
 
 
-####Whitelisting
+#### Whitelisting
 Whitelisting is a key security design pattern used throughout the evoting system for validating user input:
 * At the reverse proxy level, for each service published by the application:
   * a regular expression pattern defines the URI validity (rewrite rules). It validates the incoming requests URI method,
@@ -316,7 +316,7 @@ page is issued.
 * At the regular expression patterns level, whitelisting is also prefered to excluding for example specific characters 
 for validating user input.
 
-####Monitoring of the system integrity
+#### Monitoring of the system integrity
 A monitoring application is in charge of checking regularly the state of the system and raises alerts in case of
 failures. It runs a collection of probes, the security-wise main ones being:
 * A probe that casts votes in a test ballot box through the internet voting application services.
@@ -326,7 +326,7 @@ fingerprints of each received ballot.
  have used the internet voting channel.
 * A probe that checks the integrity of the election data stored in the database.
 
-####Logging
+#### Logging
 The following logs are generated by the evoting system applications. They are sent to a central SIEM system for
 collection and integrity guarantee (the SIEM system uses fingerprints and block chaining):  
 
@@ -346,7 +346,7 @@ Furthermore:
  and made unfalsifiable by the privileged access management system.
 * The logs of the actions made with the PAM user interface itself can't be tampered with either. 
 
-####Offline manipulation of the ballots and the decryption key
+#### Offline manipulation of the ballots and the decryption key
 Finally, the shuffling done by the offline administration application and the protection of the private decryption key guarantee that the 
 votes can not be decrypted outside the offline console and that there is no link between the voters and the decrypted votes. This achieves 
 the objectives of vote secrecy and of non-disclosure of early provisional results.
