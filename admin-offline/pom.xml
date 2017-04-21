@@ -11,7 +11,7 @@
 
     <groupId>ch.ge.ve</groupId>      <!-- needed by version maven plugin -->
     <artifactId>admin-offline</artifactId>
-    <version>5.2.1.10</version>
+    <version>5.2.2.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Admin offline</name>
     <description>
@@ -23,12 +23,12 @@
     </description>
 
     <scm>
-        <connection>${scm.base.url}/branches/201702VP/admin-offline</connection>
-        <developerConnection>${scm.base.url}/branches/201702VP/admin-offline</developerConnection>
+        <connection>${scm.base.url}/branches/development/admin-offline</connection>
+        <developerConnection>${scm.base.url}/branches/development/admin-offline</developerConnection>
     </scm>
 
     <properties>
-        <commons.version>5.2.1.7</commons.version>
+        <commons.version>5.2.1.8-SNAPSHOT</commons.version>
         <oracle.jre.version>8u112</oracle.jre.version>
         <oracle.jre.path>jre1.8.0_112</oracle.jre.path>
     </properties>
