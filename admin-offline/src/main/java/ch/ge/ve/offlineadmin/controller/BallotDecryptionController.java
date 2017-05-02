@@ -44,10 +44,6 @@ import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
 import org.apache.log4j.Logger;
-import org.joda.time.DateTime;
-import org.joda.time.Period;
-import org.joda.time.format.PeriodFormatter;
-import org.joda.time.format.PeriodFormatterBuilder;
 
 import javax.crypto.SealedObject;
 import javax.xml.bind.DatatypeConverter;
@@ -58,6 +54,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -65,6 +62,7 @@ import java.util.ResourceBundle;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.time.ZonedDateTime;
 
 import static ch.ge.ve.commons.crypto.SensitiveDataCryptoUtilsConfigurationDefaultImpl.COMMON_CRYPTO_STREAM_MAX_BYTES;
 import static ch.ge.ve.offlineadmin.util.SecurityConstants.BALLOTS_FILENAME;
@@ -97,9 +95,9 @@ public class BallotDecryptionController extends InterruptibleProcessController {
     private StreamHasher streamHasher;
     private OutputFilesPattern outputFilesPattern;
     private PropertyConfigurationService propertyConfigurationService;
-    private PeriodFormatter periodFormatter;
     private PasswordDialogController passwordDialogController;
     private BallotCipherServiceFactory ballotCipherServiceFactory;
+    private ZoneId chZoneId = ZoneId.of("Europe/Zurich");
 
     @FXML
     public void initialize() throws IOException {
@@ -108,12 +106,7 @@ public class BallotDecryptionController extends InterruptibleProcessController {
         streamHasher = new StreamHasher(propertyConfigurationService);
         outputFilesPattern = new OutputFilesPattern();
 
-        periodFormatter = new PeriodFormatterBuilder()
-                .printZeroAlways()
-                .appendHours().appendSuffix(" h ")
-                .appendMinutes().appendSuffix(" min ")
-                .appendSeconds().appendSuffix(" sec ")
-                .toFormatter();
+
 
         passwordDialogController = new PasswordDialogController(resources, consoleOutputController);
         ballotCipherServiceFactory = new BallotCipherServiceFactory(propertyConfigurationService);
@@ -261,7 +254,7 @@ public class BallotDecryptionController extends InterruptibleProcessController {
             File selectedDirectory = selectDirectory();
             final String ballotsFilename = propertyConfigurationService.getConfigValue(BALLOTS_FILENAME);
 
-            Path cleartextBallotsFilename = Paths.get(selectedDirectory.toString(), outputFilesPattern.injectParams(ballotsFilename, DateTime.now()));
+            Path cleartextBallotsFilename = Paths.get(selectedDirectory.toString(), outputFilesPattern.injectParams(ballotsFilename, ZonedDateTime.now(chZoneId)));
             Files.write(cleartextBallotsFilename, decryptedBallots);
 
             byte[] cleartextBallotsFileHash;
@@ -289,11 +282,14 @@ public class BallotDecryptionController extends InterruptibleProcessController {
     }
 
     private String formatElapsedTime(Stopwatch stopwatch) {
-        Period period = Period
-                .seconds((int) stopwatch.elapsed(TimeUnit.SECONDS))
-                // Need to normalize here so that 179 seconds will be seen as 2 minutes and 59 seconds
-                .normalizedStandard();
-        return periodFormatter.print(period);
+        long elapsed = stopwatch.elapsed(TimeUnit.SECONDS);
+
+        long hours = elapsed / 3600;
+        long hourLessElapsed = elapsed % 3600;
+        long minutes = hourLessElapsed / 60;
+        long seconds = hourLessElapsed % 60;
+
+        return String.format("%d h %02d min %02d sec ", hours, minutes, seconds);
     }
 
     @Override
