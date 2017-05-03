@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ch.ge.ve</groupId>
+    <artifactId>chvote-build</artifactId>
+    <version>5.2.1.9-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>CHVote Build</name>
+    <description>CHVote Build POM</description>
+
+    <inceptionYear>2015</inceptionYear>
+
+    <modules>
+        <module>base-pom</module>
+        <module>commons-base</module>
+        <module>admin-offline</module>
+    </modules>
+
+    <scm>
+        <connection>scm:git:git://github.com/republique-et-canton-de-geneve/chvote-1-0.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:republique-et-canton-de-geneve/chvote-1-0.git</developerConnection>
+        <url>https://github.com/republique-et-canton-de-geneve/chvote-1-0</url>
+    </scm>
+
+</project>
