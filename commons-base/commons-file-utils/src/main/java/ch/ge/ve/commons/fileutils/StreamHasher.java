@@ -33,7 +33,7 @@ import java.security.MessageDigest;
  */
 public class StreamHasher {
     private final PropertyConfigurationService propertyConfigurationService;
-    private ThreadLocal<MessageDigest> messageDigestThreadLocal = new ThreadLocal<>();
+    private final ThreadLocal<MessageDigest> messageDigestThreadLocal = new ThreadLocal<>();
 
     /**
      * Constructor

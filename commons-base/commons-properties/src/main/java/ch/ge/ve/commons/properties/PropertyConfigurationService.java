@@ -39,14 +39,14 @@ import java.util.ServiceLoader;
 public class PropertyConfigurationService {
     private static final Logger LOG = Logger.getLogger(PropertyConfigurationService.class);
 
-    private Properties properties = new Properties();
+    private final Properties properties;
 
     /**
      * Creates the configuration service, sourcing itself from the declared configuration providers
      * (using the Java ServiceLoader).
      */
     public PropertyConfigurationService() {
-        loadConfigurationProviders();
+        this.properties = loadConfigurationProviders(new Properties());
     }
 
     /**
@@ -62,7 +62,7 @@ public class PropertyConfigurationService {
         if (resourceAsStream == null) {
             throw new PropertyConfigurationRuntimeException("Properties file cannot be found: " + propertiesFilePath);
         }
-        loadConfig(resourceAsStream);
+        this.properties = loadConfig(resourceAsStream);
     }
 
 
@@ -73,20 +73,20 @@ public class PropertyConfigurationService {
      * @param properties properties object to be used as defaults
      */
     public PropertyConfigurationService(final Properties properties) {
-        this.properties = new Properties(properties);
-        loadConfigurationProviders();
+        this.properties = loadConfigurationProviders(new Properties(properties));
     }
 
-    private void loadConfig(InputStream inputStream) {
+    private static Properties loadConfig(InputStream inputStream) {
+        Properties props = new Properties();
         try {
-            properties.load(inputStream);
+            props.load(inputStream);
         } catch (IOException e) {
             throw new PropertyConfigurationRuntimeException("Unable to load the base configuration", e);
         }
-        loadConfigurationProviders();
+        return loadConfigurationProviders(props);
     }
 
-    private void loadConfigurationProviders() {
+    private static Properties loadConfigurationProviders(Properties properties) {
         // load complementary properties from the service loader
         ServiceLoader<PropertyConfigurationProvider> providers = ServiceLoader.load(PropertyConfigurationProvider.class);
         for (PropertyConfigurationProvider provider : providers) {
@@ -104,6 +104,7 @@ public class PropertyConfigurationService {
                 }
             }
         }
+        return properties;
     }
 
     /**

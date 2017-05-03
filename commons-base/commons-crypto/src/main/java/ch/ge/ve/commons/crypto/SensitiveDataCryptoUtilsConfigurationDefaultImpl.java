@@ -43,14 +43,14 @@ public class SensitiveDataCryptoUtilsConfigurationDefaultImpl implements Sensiti
     public static final String COMMON_CRYPTO_STORAGE_BLOCKMODE = "common.crypto.storage.blockmode";
     public static final String COMMON_CRYPTO_STREAM_MAX_BYTES = "common.crypto.stream.max.bytes";
     private final SecureRandom SECURE_RANDOM = SecureRandomFactory.createPRNG();
-    private PropertyConfigurationService propertyConfigurationService;
+    private final PropertyConfigurationService propertyConfigurationService;
 
     // Mac and Cipher are not thread safe and thus cannot be declared as a static member used concurrently,
     // but we need to limit the instance creations for performance optimization. ThreadLocal scope
     // is the best way to ensure that there is no sharing between threads of the same object, and
     // that they are reused as much as possible (for voting cards generation for example).
-    private ThreadLocal<Mac> macThreadLocal = new ThreadLocal<>();
-    private ThreadLocal<Cipher> cipherThreadLocal = new ThreadLocal<>();
+    private final ThreadLocal<Mac> macThreadLocal = new ThreadLocal<>();
+    private final ThreadLocal<Cipher> cipherThreadLocal = new ThreadLocal<>();
 
     // no thread safety concern on the secret key
     private SecretKey secretKey;
