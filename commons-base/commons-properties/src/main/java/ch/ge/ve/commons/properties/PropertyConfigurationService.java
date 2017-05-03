@@ -39,6 +39,8 @@ import java.util.ServiceLoader;
 public class PropertyConfigurationService {
     private static final Logger LOG = Logger.getLogger(PropertyConfigurationService.class);
 
+    private static final Splitter COMMA_SPLITTER = Splitter.on(",").trimResults();
+
     private final Properties properties;
 
     /**
@@ -186,12 +188,7 @@ public class PropertyConfigurationService {
         if (configValue == null) {
             throw new PropertyConfigurationException("The property [" + key + "] does not exist");
         }
-        ArrayList<String> elementList = Lists.newArrayList();
-        Iterable<String> elements = Splitter.on(",").split(configValue);
-        for (String element : elements) {
-            elementList.add(element.trim());
-        }
-        return Iterables.toArray(elementList, String.class);
+        return COMMA_SPLITTER.splitToList(configValue).toArray(new String[0]);
     }
 
     /**
