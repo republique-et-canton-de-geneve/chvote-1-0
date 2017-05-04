@@ -21,15 +21,16 @@ package ch.ge.ve.commons.fileutils;
  * #L%
  */
 
-import org.joda.time.DateTime;
+
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.text.SimpleDateFormat;
 import java.util.Optional;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
+import java.time.format.DateTimeFormatter;
+import java.time.ZonedDateTime;
 
 /**
  * Utility class to manage the parametrized output file names.
@@ -48,8 +49,8 @@ public class OutputFilesPattern {
     public static final String DATE_FORMAT = "yyyyMMdd";
     private static final int FIND_FILES_MAX_DEPTH = 10;
 
-    private final SimpleDateFormat datetimeFormat = new SimpleDateFormat(DATE_TIME_FORMAT);
-    private final SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+    private final DateTimeFormatter datetimeFormat = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT);
+    private final DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern(DATE_FORMAT);
 
 
     /**
@@ -60,7 +61,7 @@ public class OutputFilesPattern {
      * @param date
      * @return
      */
-    public String injectParams(String pattern, String user, DateTime date) {
+    public String injectParams(String pattern, String user, ZonedDateTime date) {
         String result = pattern.replace("{date}", getDateAsString(date));
         result = result.replace("{datetime}", getDateTimeAsString(date));
         result = result.replace("{user}", user);
@@ -75,7 +76,7 @@ public class OutputFilesPattern {
      * @param date    the date and time of the file generation
      * @return the final file name
      */
-    public String injectParams(String pattern, DateTime date) {
+    public String injectParams(String pattern, ZonedDateTime date) {
         return injectParams(pattern, getSystemUserName(), date);
     }
 
@@ -89,7 +90,7 @@ public class OutputFilesPattern {
      * @param operationCode the code of the operation
      * @return the final file name
      */
-    public String injectParams(String pattern, String user, DateTime date, String operationCode) {
+    public String injectParams(String pattern, String user, ZonedDateTime date, String operationCode) {
         String result = injectParams(pattern, user, date);
         result = result.replace("{operationCode}", operationCode);
         return result;
@@ -103,7 +104,7 @@ public class OutputFilesPattern {
      * @param operationCode the code of the operation
      * @return the final file name
      */
-    public String injectParams(String pattern, DateTime date, String operationCode) {
+    public String injectParams(String pattern, ZonedDateTime date, String operationCode) {
         return injectParams(pattern, getSystemUserName(), date, operationCode);
     }
 
@@ -118,7 +119,7 @@ public class OutputFilesPattern {
      * @param hostingCode   the canton of the operation
      * @return the final file name
      */
-    public String injectParams(String pattern, String user, DateTime date, String operationCode, String hostingCode) {
+    public String injectParams(String pattern, String user, ZonedDateTime date, String operationCode, String hostingCode) {
         String result = injectParams(pattern, user, date, operationCode);
         result = result.replace("{canton}", hostingCode);
         return result;
@@ -135,7 +136,7 @@ public class OutputFilesPattern {
      * @param votersName    the name of the voters group
      * @return the final file name
      */
-    public String injectParams(String pattern, String user, DateTime date, String operationCode, String hostingCode, String votersName) {
+    public String injectParams(String pattern, String user, ZonedDateTime date, String operationCode, String hostingCode, String votersName) {
         String result = injectParams(pattern, user, date, operationCode, hostingCode);
         result = result.replace("{votersName}", votersName);
         return result;
@@ -150,7 +151,7 @@ public class OutputFilesPattern {
      * @param hostingCode   the canton of the operation
      * @return the final file name
      */
-    public String injectParams(String pattern, DateTime date, String operationCode, String hostingCode) {
+    public String injectParams(String pattern, ZonedDateTime date, String operationCode, String hostingCode) {
         return injectParams(pattern, getSystemUserName(), date, operationCode, hostingCode);
     }
 
@@ -164,7 +165,7 @@ public class OutputFilesPattern {
      * @param votersName    the name of the voters group
      * @return the final file name
      */
-    public String injectParams(String pattern, DateTime date, String operationCode, String hostingCode, String votersName) {
+    public String injectParams(String pattern, ZonedDateTime date, String operationCode, String hostingCode, String votersName) {
         return injectParams(pattern, getSystemUserName(), date, operationCode, hostingCode, votersName);
     }
 
@@ -186,12 +187,12 @@ public class OutputFilesPattern {
         }
     }
 
-    private String getDateAsString(DateTime date) {
-        return dateFormat.format(date.getMillis());
+    private String getDateAsString(ZonedDateTime date) {
+        return dateFormat.format(date);
     }
 
-    private String getDateTimeAsString(DateTime date) {
-        return datetimeFormat.format(date.getMillis());
+    private String getDateTimeAsString(ZonedDateTime date) {
+        return datetimeFormat.format(date);
     }
 
     private static String getSystemUserName() {

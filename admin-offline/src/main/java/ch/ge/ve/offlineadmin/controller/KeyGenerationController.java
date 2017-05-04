@@ -36,7 +36,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import org.apache.log4j.Logger;
-import org.joda.time.DateTime;
 
 import javax.crypto.SecretKey;
 import javax.xml.bind.DatatypeConverter;
@@ -48,6 +47,8 @@ import java.security.*;
 import java.security.cert.CertificateEncodingException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ResourceBundle;
 
 import static ch.ge.ve.offlineadmin.util.SecurityConstants.*;
@@ -74,6 +75,7 @@ public class KeyGenerationController extends InterruptibleProcessController {
     private StreamHasher streamHasher;
     private PasswordDialogController passwordDialogController;
     private KeyGenerator keyGenerator;
+    private ZoneId chZoneId = ZoneId.of("Europe/Zurich");
 
     @FXML
     private void initialize() {
@@ -135,7 +137,7 @@ public class KeyGenerationController extends InterruptibleProcessController {
 
         OutputFilesPattern outputFilesPattern = new OutputFilesPattern();
 
-        final DateTime now = DateTime.now();
+        final ZonedDateTime now = ZonedDateTime.now(chZoneId);
 
         final String keysFolder = outputFilesPattern.injectParams(propertyConfigurationService.getConfigValue("keys_folder"), now);
         Path keyFolderPath = Paths.get(selectedDirectory.toString(), keysFolder);

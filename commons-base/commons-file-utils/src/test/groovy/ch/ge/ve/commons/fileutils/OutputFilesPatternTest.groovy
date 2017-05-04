@@ -22,14 +22,16 @@ package ch.ge.ve.commons.fileutils
  * #L%
  */
 
-import org.joda.time.DateTime
-import org.joda.time.format.DateTimeFormat
-import org.joda.time.format.DateTimeFormatter
+
 import spock.lang.Specification
 import spock.lang.Unroll
 
 import java.nio.file.Path
 import java.nio.file.Paths
+import java.time.LocalDateTime
+import java.time.ZonedDateTime
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 import java.util.regex.Pattern
 
 /**
@@ -38,12 +40,12 @@ import java.util.regex.Pattern
 class OutputFilesPatternTest extends Specification {
     private OutputFilesPattern ofp = new OutputFilesPattern()
     private DateTimeFormatter dateTimeFormatter
-    private DateTime dateTime
+    private ZonedDateTime dateTime
     private String username;
 
     void setup() {
-        dateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")
-        dateTime = DateTime.parse("2016-11-21 23:25:54", dateTimeFormatter)
+        dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+        dateTime = LocalDateTime.parse("2016-11-21 23:25:54", dateTimeFormatter).atZone(ZoneId.of("Europe/Zurich"));
         username = System.getProperty("user.name")
         System.setProperty("user.name", "MyUser")
     }

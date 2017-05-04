@@ -35,7 +35,7 @@ public class PropertyConfigurationProviderSecurityImpl implements PropertyConfig
 
     private static final String PROPS_FILE = "common-crypto.properties";
 
-    private Properties properties;
+    private final Properties properties;
 
     public PropertyConfigurationProviderSecurityImpl() {
         properties = new Properties();
