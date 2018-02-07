@@ -71,7 +71,7 @@ mvn clean install
 ```
 
 Some JDK distributions do not come with the Monocle classes used by the headless GUI tests. If you're running into those cases 
-(java.lang.AbstractMethodError: com.sun.glass.ui.monocle.NativePlatform.createInputDeviceRegistry appearing in the test logs),
+(`java.lang.AbstractMethodError: com.sun.glass.ui.monocle.NativePlatform.createInputDeviceRegistry` appearing in the test logs),
 use the following command to skip the GUI tests:
 
 ```Shell
