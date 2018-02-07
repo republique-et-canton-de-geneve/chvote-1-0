@@ -52,7 +52,7 @@ The following software must be installed to compile and run the application:
 * Oracle JDK 8
 * Maven 3
 * [JCE Unlimited Strength Jurisdiction Policy Files for Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html)
-  (see the `readme.txt` file in the downloaded file for installation instructions into your JDK instance).
+  (see the `UnlimitedJCEPolicyJDK8/README.txt` file in the downloaded ZIP archive for installation instructions into your JDK instance).
   
 We do not provide support for the use of OpenJDK/OpenJFX. 
 
