@@ -107,5 +107,5 @@ In case of vulnerability discovery, please use the following email address for c
 CHVote components are released under [AGPL 3.0](https://www.gnu.org/licenses/agpl.txt).
 
 # Future
-The second generation of CHVote is under active development. It aims to provide end-to-end encryption with individual
-and universal verifiabilities. Its source code will be published under AGPL 3.0 as well.
+The second generation of CHVote has been under active development in 2017 and 2018. The project has since been discontinued and will not be put into production. It aimed to provide end-to-end encryption with individual
+and universal verifiabilities. Its source code is published here: [https://chvote2.gitlab.io](https://chvote2.gitlab.io).
